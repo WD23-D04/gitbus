@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectToDb } from './utils/connectToDb.js';
+import { customerRouter } from './routers/customerRouter.js';
 
 dotenv.config();
 
@@ -10,6 +11,8 @@ const DB_URI = process.env.DB_URI;
 const PORT = process.env.PORT || 3030;
 
 app.use(express.json());
+
+app.use('/customer', customerRouter);
 
 const startServer = async () => {
   try {
