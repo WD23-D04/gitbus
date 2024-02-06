@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { routeStopSubdocument } from './subdocuments/routeStopSubdocument.js';
 
-export const Route = new mongoose.Schema({
+export const routeSchema = new mongoose.Schema({
   stops: [routeStopSubdocument],
 });
+export const Route = mongoose.model('Route', routeSchema);
