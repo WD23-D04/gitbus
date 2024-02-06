@@ -2,9 +2,7 @@ import mongoose from "mongoose"
 
 
 
-const Schema = mongoose.Schema;
-
-const TravelSchema = new Schema({
+const TravelSchema = mongoose.Schema({
     date: {
         type: Date,
         required: true
@@ -47,4 +45,4 @@ const TravelSchema = new Schema({
     notes: [String]
 });
 
-module.exports = mongoose.model('Travel', TravelSchema);
+export default mongoose.model('Travel', TravelSchema);
