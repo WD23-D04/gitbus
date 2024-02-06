@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 
 
-const TravelSchema = mongoose.Schema({
+const TravelSchema =  mongoose.Schema({
     date: {
         type: Date,
         required: true
