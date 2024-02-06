@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import { Stop } from '../schemas/stopSchema.js';
 
 export const addSingleStop = async (req, res) => {
@@ -32,7 +31,7 @@ export const getAllStops = async (req, res) => {
   }
 };
 
-export const updateStopStop = async (req, res) => {
+export const updateSingleStop = async (req, res) => {
   try {
     const stop = await Stop.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
