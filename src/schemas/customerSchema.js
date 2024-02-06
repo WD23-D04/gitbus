@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import { personalInfoSchema } from './subdocuments/personInfoSubdocument.js';
+import { personInfoSubdocument } from './subdocuments/personInfoSubdocument.js';
 
 export const customerSchema = new mongoose.Schema(
   {
-    ...personalInfoSchema.obj,
+    ...personInfoSubdocument.obj,
     email: String,
     personalId: String,
     baggage: Number,
