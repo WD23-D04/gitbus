@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 import mongoose from 'mongoose';
 import { connectToDb } from './utils/connectToDb.js';
 import { customerRouter } from './routers/customerRouter.js';
-import { fakeDataController } from './controllers/fakeDataController.js';
+import { addFakeData, deleteAllFakeData } from './utils/addFakeData.js';
 dotenv.config();
 
 const app = express();
@@ -26,26 +26,8 @@ const PersonSchema = new mongoose.Schema(
   }
 );
 
-/* const Person = mongoose.model('Person', PersonSchema);
-
-const persons = [];
-
-for (let i = 1; i <= 20; i++) {
-  const firstName = faker.person.firstName();
-  const lastName = faker.person.lastName();
-  const email = faker.internet.email();
-  persons.push({
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-  });
-} 
-
-persons.forEach((person) => Person.create(person));
-*/
-
 app.use('/customer', customerRouter);
-app.post('/fake', fakeDataController);
+app.route('/fake').post(addFakeData).delete(deleteAllFakeData);
 
 const startServer = async () => {
   try {

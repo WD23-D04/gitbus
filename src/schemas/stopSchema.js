@@ -4,7 +4,7 @@ export const stopSchema = new mongoose.Schema(
   {
     name: String,
     standingRoom: Number,
-    notes: [Strings],
+    notes: [String],
   },
   {
     timestamps: true,
