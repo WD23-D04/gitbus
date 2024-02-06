@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export const stopSchema = new mongoose.Schema(
   {
     name: String,
-    room: Number,
+    standingRoom: Number,
     notes: [Strings],
   },
   {

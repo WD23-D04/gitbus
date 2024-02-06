@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 
+import { leaveDaysSubdocument } from './subdocuments/leaveDaysSubdocument.js';
+import { personInfoSchema } from './subdocuments/personInfoSubdocument.js';
 export const employeeSchema = new mongoose.Schema(
   {
-    PersonalInfo,
+    ...personInfoSchema.obj,
     startedDate: Date,
     role: String,
     vacationDays: Number,
-    vacationTaken: [{ start: Date, end: Date }],
-    leaveDays: [{ start: Date, end: Date }],
+    vacationTaken: [...leaveDaysSubdocument.obj],
+    leaveDays: [...leaveDaysSubdocument.obj],
     services: { type: mongoose.Types.ObjectId, ref: 'Travel' },
   },
   {
