@@ -6,7 +6,7 @@ export const busSchema = new mongoose.Schema(
     model: String,
     specialPackage: [String],
     buyedOn: Date,
-    seat: Number,
+    seat: String,
   },
   { collection: "bus", timestamps: true }
 );
