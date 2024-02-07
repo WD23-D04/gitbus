@@ -9,6 +9,9 @@ export const addSingleBus = async (req, res) => {
   }
 };
 
+
+
+
 export const getSingleBus = async (req, res) => {
   try {
     const bus = await Bus.findById(req.params.id);
