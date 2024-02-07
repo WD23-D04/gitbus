@@ -6,7 +6,7 @@ export const busSchema = new mongoose.Schema(
       type: String,
       required: true,
       minLength: 3,
-      maxLength: 50,
+      maxLength: [50, "The manufactur field may contain up to 50 characters"],
 
       trim: true,
       lowercase: true,
