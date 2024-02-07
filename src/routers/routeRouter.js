@@ -6,7 +6,7 @@ import {
   addSingleRoute,
   updateSingleRoute,
   deleteSingleRoute,
-} from '../controllers/RouteController.js';
+} from '../controllers/routeController.js';
 
 export const routeRouter = express.Router();
 

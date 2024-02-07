@@ -6,7 +6,7 @@ import {
   addSingleStop,
   updateSingleStop,
   deleteSingleStop,
-} from '../controllers/StopController.js';
+} from '../controllers/stopController.js';
 
 export const stopRouter = express.Router();
 
