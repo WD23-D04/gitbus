@@ -8,10 +8,10 @@ import {
   deleteSingleRoute,
 } from '../controllers/RouteController.js';
 
-export const RouteRouter = express.Router();
+export const routeRouter = express.Router();
 
-RouteRouter.route('/').get(getAllRoutes).post(addSingleRoute);
-RouteRouter
+routeRouter.route('/').get(getAllRoutes).post(addSingleRoute);
+routeRouter
   .route('/:id')
   .get(getSingleRoute)
   .patch(updateSingleRoute)

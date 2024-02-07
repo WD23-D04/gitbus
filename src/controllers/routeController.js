@@ -1,8 +1,8 @@
-import { Route } from '../schemas/RouteSchema.js';
+import { Route } from '../schemas/routeSchema.js';
 
 export const addSingleRoute = async (req, res) => {
   try {
-    const rtoute = await Route.create(req.body);
+    const route = await Route.create(req.body);
     res.status(201).json(route);
   } catch (e) {
     res.status(500).json(e);

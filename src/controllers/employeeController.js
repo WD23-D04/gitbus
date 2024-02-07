@@ -1,4 +1,4 @@
-import { Employee } from '../schemas/EmployeeSchema.js';
+import { Employee } from '../schemas/employeeSchema.js';
 
 export const addSingleEmployee = async (req, res) => {
   try {

@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-export const travelCustomerLink = new mongoose.Schema(
+export const travelCustomerLinkSchema = new mongoose.Schema(
   {
-    users: [{ ype: mongoose.Types.ObjectId, ref: "User" }],
-    travel: { type: mongoose.Types.ObjectId, ref: "Travel" },
+    users: [{ type: mongoose.Types.ObjectId, ref: 'User' }],
+    travel: { type: mongoose.Types.ObjectId, ref: 'Travel' },
   },
   {
     timestamps: true,
-    collection: "travelCustomerLink",
+    collection: 'travelCustomerLink',
   }
 );
 
 export const TravelCustomerLink = mongoose.model(
-  "TravelCustomer",
-  travelCustomerLink
+  'TravelCustomerLinkSchema',
+  travelCustomerLinkSchema
 );

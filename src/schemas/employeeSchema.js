@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 import { leaveDaysSubdocument } from './subdocuments/leaveDaysSubdocument.js';
 import { personInfoSubdocument } from './subdocuments/personInfoSubdocument.js';
-export const employeeSchema = new mongoose.Schema(
+
+const employeeSchema = new mongoose.Schema(
   {
     ...personInfoSubdocument.obj,
     startedDate: Date,
@@ -18,3 +19,5 @@ export const employeeSchema = new mongoose.Schema(
 );
 
 export const Employee = mongoose.model('Employee', employeeSchema);
+
+

@@ -31,7 +31,7 @@ export const getAllTravels = async (req, res) => {
   }
 };
 
-export const updateSingletravel = async (req, res) => {
+export const updateSingleTravel = async (req, res) => {
   try {
     const travel = await Travel.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
