@@ -8,11 +8,11 @@ import {
   deleteSingleStop,
 } from '../controllers/StopController.js';
 
-export const StopStopr = express.Stopr();
+export const stopRouter = express.Router();
 
-StopStopr.Stop('/').get(getAllStops).post(addSingleStop);
-StopStopr
-  .Stop('/:id')
+stopRouter.route('/').get(getAllStops).post(addSingleStop);
+stopRouter
+  .route('/:id')
   .get(getSingleStop)
   .patch(updateSingleStop)
   .delete(deleteSingleStop);

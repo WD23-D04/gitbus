@@ -1,14 +1,27 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export const busSchema = new mongoose.Schema(
   {
-    manufactur: String,
+    manufactur: {
+      type: String,
+      required: true,
+      minLength: 3,
+      maxLength: 50,
+
+      trim: true,
+      lowercase: true,
+    },
     model: String,
     specialPackage: [String],
-    buyedOn: Date,
+    buyedOn: { type: Date, default: new Date() },
     seat: String,
+    quantity: {
+      type: Number,
+      min: 3,
+      max: 300,
+    },
   },
-  { collection: "bus", timestamps: true }
+  { collection: 'bus', timestamps: true }
 );
 
-export const Bus = mongoose.model("Bus", busSchema);
+export const Bus = mongoose.model('Bus', busSchema);

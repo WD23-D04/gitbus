@@ -1,21 +1,22 @@
 import express from 'express';
 
 import {
-  getSingleTravelRouter,
-  getAllTravelRouters,
-  addSingleTravelRouter,
-  updateSingleTravelRouter,
-  deleteSingleTravelRouter,
-} from '../controllers/TravelRouterController.js';
+  getSingleTravel,
+  getAllTravels,
+  addSingleTravel,
+  updateSingleTravel,
+  deleteSingleTravel,
+} from '../controllers/travelController.js';
 
-export const TravelRouterRouter = express.Router();
+export const travelRouter = express.Router();
 
-TravelRouterRouter
+travelRouter
   .route('/')
-  .get(getAllTravelRouters)
-  .post(addSingleTravelRouter);
-TravelRouterRouter
+  .get(getAllTravels)
+  .post(addSingleTravel);
+  travelRouter
   .route('/:id')
-  .get(getSingleTravelRouter)
-  .patch(updateSingleTravelRouter)
-  .delete(deleteSingleTravelRouter);
+  .get(getSingleTravel)
+  .patch(updateSingleTravel)
+  .delete(  deleteSingleTravel,
+    );

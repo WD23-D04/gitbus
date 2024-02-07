@@ -6,7 +6,7 @@ import {
   addSingleTravelCustomer,
   updateSingleTravelCustomer,
   deleteSingleTravelCustomer,
-} from '../controllers/TravelCustomerController.js';
+} from '../controllers/travelCustomerController.js';
 
 export const travelCustomerRouter = express.Router();
 
@@ -14,7 +14,7 @@ travelCustomerRouter
   .route('/')
   .get(getAllTravelCustomers)
   .post(addSingleTravelCustomer);
-travelCustomerRouter
+  travelCustomerRouter
   .route('/:id')
   .get(getSingleTravelCustomer)
   .patch(updateSingleTravelCustomer)
