@@ -18,6 +18,7 @@ const app = express();
 const DB_URI = process.env.DB_URI;
 const PORT = process.env.PORT || 3030;
 
+
 app.use(express.json());
 
 app.use('/bus', busRouter);
