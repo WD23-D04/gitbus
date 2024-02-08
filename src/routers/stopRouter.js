@@ -3,6 +3,7 @@ import express from 'express';
 import {
   getSingleStop,
   getAllStops,
+  getFilteredStops,
   addSingleStop,
   updateSingleStop,
   deleteSingleStop,
@@ -10,7 +11,12 @@ import {
 
 export const stopRouter = express.Router();
 
-stopRouter.route('/').get(getAllStops).post(addSingleStop);
+stopRouter
+  .route('/')
+  .get((req, res) =>
+    req.query ? getFilteredStops(req, res) : getAllStops(req, res)
+  )
+  .post(addSingleStop);
 stopRouter
   .route('/:id')
   .get(getSingleStop)

@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
   getSingleBus,
+  getFilteredBus,
   getAllBus,
   addSingleBus,
   updateSingleBus,
@@ -10,7 +11,12 @@ import {
 
 export const busRouter = express.Router();
 
-busRouter.route('/').get(getAllBus).post(addSingleBus);
+busRouter
+  .route('/')
+  .get((req, res) =>
+    req.query ? getFilteredBus(req, res) : getAllBus(req, res)
+  )
+  .post(addSingleBus);
 busRouter
   .route('/:id')
   .get(getSingleBus)
