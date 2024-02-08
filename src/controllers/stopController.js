@@ -22,6 +22,17 @@ export const getSingleStop = async (req, res) => {
   }
 };
 
+export const getFilteredStops = async (req, res) => {
+  try {
+    const stops = await Stop.find({ name: { $in: ['Lakeville'] } });
+    stops
+      ? res.status(200).json(stops)
+      : res.status(404).json({ msg: ' route not found' });
+  } catch (e) {
+    res.status(500).json(e);
+  }
+};
+
 export const getAllStops = async (req, res) => {
   try {
     const stops = await Stop.find();

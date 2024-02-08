@@ -22,6 +22,16 @@ export const getSingleRoute = async (req, res) => {
   }
 };
 
+export const getFilteredRoutes = async (req, res) => {
+  try {
+    const filter = {  };
+    const routes = await Route.find(filter);
+    res.status(200).json(routes);
+  } catch (e) {
+    res.status(500).json(e);
+  }
+};
+
 export const getAllRoutes = async (req, res) => {
   try {
     const routes = await Route.find();

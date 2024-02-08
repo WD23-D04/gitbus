@@ -3,6 +3,7 @@ import express from 'express';
 import {
   getSingleTravel,
   getAllTravels,
+  getFilteredTravels,
   addSingleTravel,
   updateSingleTravel,
   deleteSingleTravel,
@@ -12,11 +13,12 @@ export const travelRouter = express.Router();
 
 travelRouter
   .route('/')
-  .get(getAllTravels)
+  .get((req, res) =>
+    req.query ? getFilteredTravels(req, res) : getAllTravels(req, res)
+  )
   .post(addSingleTravel);
-  travelRouter
+travelRouter
   .route('/:id')
   .get(getSingleTravel)
   .patch(updateSingleTravel)
-  .delete(  deleteSingleTravel,
-    );
+  .delete(deleteSingleTravel);

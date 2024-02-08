@@ -44,13 +44,15 @@ const employeeData = Array.from({ length: 60 }, () => ({
 }));
 
 const routeData = Array.from({ length: 30 }, () => ({
-  stops: Array.from({ length: generateRandomNumber(12) }, () =>
-    faker.database.mongodbObjectId()
-  ),
+  stops: Array.from({ length: generateRandomNumber(12) }, () => ({
+    stop: faker.database.mongodbObjectId(),
+    arrival: faker.date.soon(),
+    departure: faker.date.soon(),
+  })),
 }));
 
 const stopData = Array.from({ length: 80 }, () => ({
-  name: faker.airline.airport(),
+  name: faker.location.city(),
   standingRoom: faker.number.int({ max: 15 }),
   notes: Array.from({ length: generateRandomNumber(3) }, () =>
     faker.lorem.paragraph()
@@ -80,8 +82,6 @@ addFakeData is in fact an express controller (with the only goal of adding fake 
 
 */
 
-
-
 export const getFakeData = async (collection) => {
   try {
     const data = await collection.find();
@@ -93,37 +93,21 @@ export const getFakeData = async (collection) => {
 
 export const addFakeData = async (req, res) => {
   try {
-    const insertData = async (collection, data) =>
-      await getFakeData(collection).then((data) =>
-        data.length > 3000 ? null : collection.insertMany(data)
-      );
-
-    /* const _customers = await getFakeData(Customer)
-    .then(data => data.length > 3000 ? null : Customer.insertMany(customersData))
-    .catch(error => {
-        throw error;
-    });
-    const employees = !tooManyEmployees && await Employee.insertMany(employeeData);
-    const tooManyStops = await getFakeData(Stop)
-    const stops = !tooManyStops.length && await Stop.insertMany(stopData);
-    const tooManyBus = await getFakeData(But)
-    const bus = !tooManyBus.length && await Bus.insertMany(busData);
-    const travels = await Travel.insertMany(travelData); */
-
-    res.status(201).json(insertData(Customer, customersData));
-    /* res.status(201).json({ customers, employees, stops, bus, travels}); */
+    /* const bus = await Bus.insertMany(busData); */
+    /* const customers = await Customer.insertMany(customersData); */
+    /* const employees = await Employee.insertMany(employeeData); */
+    const routes = await Route.insertMany(routeData);
+    /* const stops = await Stop.insertMany(stopData); */
+    /* const travels = await Travel.insertMany(travelData); */
+    res.status(201).json(routes);
   } catch (e) {
     res.status(500).json(e);
   }
 };
 
-/* NOT WORKING 
-    const routes = await Route.insertMany(routeData);
-     */
-
 export const deleteAllFakeData = async (req, res) => {
   try {
-    const collection = Customer.deleteMany({});
+    const collection = Route.deleteMany({});
     res.status(200).json(collection);
   } catch (e) {
     res.status(500).json(e);

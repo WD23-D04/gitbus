@@ -20,6 +20,7 @@ export const getAllCustomers = async (req, res) => {
 
 export const getFilteredCustomers = async (req, res) => {
   try {
+
     const customers = await Customer.find({});
     res.status(200).json(customers);
   } catch(e){

@@ -9,17 +9,22 @@ export const addSingleBus = async (req, res) => {
   }
 };
 
-
-
+export const getFilteredBus = async (req, res) => {
+  try {
+    const filter = { specialPackage: { $in: ['09eH<O+`', '2Et.gNGo'] } };
+    const buses = await Bus.find(filter);
+    res.status(200).json(buses);
+  } catch (e) {
+    res.status(500).json(e);
+  }
+};
 
 export const getSingleBus = async (req, res) => {
   try {
     const bus = await Bus.findById(req.params.id);
     bus
       ? res.status(200).json(bus)
-      : res
-          .status(404)
-          .json({ mgs: `bus with id ${req.params.id} not found` });
+      : res.status(404).json({ mgs: `bus with id ${req.params.id} not found` });
   } catch (e) {
     res.status(500).json(e);
   }
@@ -41,9 +46,7 @@ export const updateSingleBus = async (req, res) => {
     });
     bus
       ? res.status(200).json(bus)
-      : res
-          .status(404)
-          .json({ mgs: `bus with id ${req.params.id} not found` });
+      : res.status(404).json({ mgs: `bus with id ${req.params.id} not found` });
   } catch (e) {
     res.status(500).json(e);
   }
@@ -54,9 +57,7 @@ export const deleteSingleBus = async (req, res) => {
     const bus = await Bus.findByIdAndDelete(req.params.id);
     bus
       ? res.status(200).json(bus)
-      : res
-          .status(404)
-          .json({ mgs: `bus with id ${req.params.id} not found` });
+      : res.status(404).json({ mgs: `bus with id ${req.params.id} not found` });
   } catch (e) {
     res.status(500).json(e);
   }
